@@ -11,6 +11,11 @@ namespace Artemis.Plugins.Devices.RoccatVulcan
         public VulcanDeviceProvider(IRgbService rgbService) : base(RGB.NET.Devices.Vulcan.VulcanDeviceProvider.Instance)
         {
             _rgbService = rgbService;
+            CreateMissingLedsSupported = false;
+            RemoveExcessiveLedsSupported = true;
+
+            CanDetectLogicalLayout = false;
+            CanDetectPhysicalLayout = false;
         }
 
         public override void Enable()
