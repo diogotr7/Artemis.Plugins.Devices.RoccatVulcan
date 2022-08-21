@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Vulcan.NET" Version="2.2.0" />
-    <PackageReference Include="RGB.NET.Core" Version="1.0.0-prerelease7" />
+    <PackageReference Include="RGB.NET.Core" Version="1.0.0-prerelease.46" />
   </ItemGroup>
 
 </Project>
