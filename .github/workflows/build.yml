@@ -7,30 +7,19 @@ jobs:
     runs-on: [windows-latest]
 
     steps:
-      - name: Setup .NET 5.0
+      - name: Setup .NET 6.0
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
-
-      - name: Clone Artemis
-        uses: actions/checkout@v2
-        with:
-          repository: Artemis-RGB/Artemis
-          path: Artemis
-
-      - name: Build Artemis
-        run: dotnet build .\Artemis\src\Artemis.sln
-
+          
       - name: Clone Plugins
         uses: actions/checkout@v2
-        with:
-          path: Plugins
 
       - name: Build Plugin
-        run: dotnet publish -c Release .\Plugins\src\Artemis.Plugins.Devices.RoccatVulcan.sln
+        run: dotnet publish -c Release src/Artemis.Plugins.Devices.RoccatVulcan.sln
 
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: Artemis.Plugins.Devices.RoccatVulcan
-          path: .\Plugins\src\Artemis.Plugins.Devices.RoccatVulcan\bin\x64\Release\net6.0\publish
+          path: src/Artemis.Plugins.Devices.RoccatVulcan/bin/x64/Release/net6.0/publish
