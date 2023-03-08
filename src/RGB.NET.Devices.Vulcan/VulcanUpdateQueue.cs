@@ -13,14 +13,14 @@ namespace RGB.NET.Devices.Vulcan
             _vulcanKeyboard = vulcanKeyboard;
         }
 
-        protected override void Update(in ReadOnlySpan<(object key, Color color)> dataSet)
+        protected override bool Update(in ReadOnlySpan<(object key, Color color)> dataSet)
         {
             foreach ((object key, Color color) item in dataSet)
             {
                 _vulcanKeyboard.SetKeyColor((Key)item.key, item.color.GetR(), item.color.GetG(), item.color.GetB());
             }
 
-            _vulcanKeyboard.Update();
+            return _vulcanKeyboard.Update();
         }
     }
 }
