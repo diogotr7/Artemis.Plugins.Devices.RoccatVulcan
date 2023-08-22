@@ -1,6 +1,7 @@
 ﻿using Artemis.Core.DeviceProviders;
 using Artemis.Core.Services;
-using RGB.NET.Devices.Vulcan;
+using RGBDeviceProvider = RGB.NET.Devices.Vulcan.VulcanDeviceProvider;
+
 
 namespace Artemis.Plugins.Devices.RoccatVulcan
 {
@@ -8,7 +9,7 @@ namespace Artemis.Plugins.Devices.RoccatVulcan
     {
         private readonly IRgbService _rgbService;
 
-        public VulcanDeviceProvider(IRgbService rgbService) : base(RGB.NET.Devices.Vulcan.VulcanDeviceProvider.Instance)
+        public VulcanDeviceProvider(IRgbService rgbService)
         {
             _rgbService = rgbService;
             CreateMissingLedsSupported = false;
@@ -17,6 +18,8 @@ namespace Artemis.Plugins.Devices.RoccatVulcan
             CanDetectLogicalLayout = false;
             CanDetectPhysicalLayout = false;
         }
+        
+        public override RGBDeviceProvider RgbDeviceProvider => RGBDeviceProvider.Instance;
 
         public override void Enable()
         {
