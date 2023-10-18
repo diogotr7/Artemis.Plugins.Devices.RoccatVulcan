@@ -7,11 +7,11 @@ namespace Artemis.Plugins.Devices.RoccatVulcan
 {
     public class VulcanDeviceProvider : DeviceProvider
     {
-        private readonly IRgbService _rgbService;
+        private readonly IDeviceService _deviceService;
 
-        public VulcanDeviceProvider(IRgbService rgbService)
+        public VulcanDeviceProvider(IDeviceService deviceService)
         {
-            _rgbService = rgbService;
+            _deviceService = deviceService;
             CreateMissingLedsSupported = false;
             RemoveExcessiveLedsSupported = true;
 
@@ -23,12 +23,12 @@ namespace Artemis.Plugins.Devices.RoccatVulcan
 
         public override void Enable()
         {
-            _rgbService.AddDeviceProvider(RgbDeviceProvider);
+            _deviceService.AddDeviceProvider(this);
         }
 
         public override void Disable()
         {
-            _rgbService.RemoveDeviceProvider(RgbDeviceProvider);
+            _deviceService.RemoveDeviceProvider(this);
             RgbDeviceProvider.Dispose();
         }
     }
