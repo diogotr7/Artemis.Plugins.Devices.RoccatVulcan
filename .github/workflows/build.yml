@@ -8,13 +8,13 @@ jobs:
 
     steps:
       - name: Clone Plugins
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build Plugin
         run: dotnet publish -c Release src/Artemis.Plugins.Devices.RoccatVulcan.sln
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Artemis.Plugins.Devices.RoccatVulcan
           path: src/Artemis.Plugins.Devices.RoccatVulcan/bin/x64/Release/net8.0/publish
